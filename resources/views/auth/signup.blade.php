@@ -16,6 +16,8 @@
       <input type="date" id="dob" name="dob" value="{{ old('dob') }}">
       <label for="password">Password (min 6 characters)</label>
       <input type="password" id="password" name="password" required>
+      <label for="password_confirmation">Confirm password</label>
+      <input type="password" id="password_confirmation" name="password_confirmation" required>
       <div style="margin-top:16px;">
         <button type="submit" class="btn" style="width:100%;">Sign up</button>
       </div>

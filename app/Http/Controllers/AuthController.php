@@ -62,6 +62,7 @@ class AuthController extends Controller
         $name = trim($request->input('name', ''));
         $email = strtolower(trim($request->input('email', '')));
         $password = $request->input('password', '');
+        $passwordConfirmation = $request->input('password_confirmation', '');
 
         $errors = [];
         if ($name === '') {
@@ -72,6 +73,9 @@ class AuthController extends Controller
         }
         if (strlen($password) < 6) {
             $errors[] = 'Password must be at least 6 characters.';
+        }
+        if ($password !== $passwordConfirmation) {
+            $errors[] = 'Passwords do not match.';
         }
         if ($email !== '' && Account::where('email', $email)->exists()) {
             $errors[] = 'That email is already registered.';
